@@ -1,21 +1,26 @@
-import note from '../../../store/note.json'
 import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import NoteService from '../../../services/note-service/note-service'
 
 function NoteViewPage() {
-    let { noteView } = useParams()
-    let noteContent = ''
-    let noteTitle = ''
-    note.forEach((value, key) => {
-        if (value.url == noteView) {
-            noteContent = value.content
-            noteTitle = value.title
+    const { noteView } = useParams()
+    const [note, setNote] = useState(Object)
+
+    useEffect(() => {
+        if (noteView) {
+            NoteService.getNote(noteView)
+                .then((res) => {
+                    setNote(res.data)
+                    console.log(res.data)
+                })
+                .catch((err) => console.error(err))
         }
-    })
+    }, [])
 
     return (
         <>
-            <h1>{noteTitle}</h1>
-            <div>{noteContent}</div>
+            <h1>{note.title}</h1>
+            <div>{note.subtitle}</div>
         </>
     )
 }

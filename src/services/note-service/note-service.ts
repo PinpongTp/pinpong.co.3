@@ -15,8 +15,12 @@ class NoteService {
 
     // const API_URL = configData.API_URL + '/note';
     
-    getNote() {
-        return Axios.get(`${url}/note/list`, config)
+    getNote(noteId?: string) {
+        if(noteId) {
+            return Axios.get(`${url}/note/data/${noteId}`)
+        }else {
+            return Axios.get(`${url}/note/list`, config)
+        }
     }
 
 }
