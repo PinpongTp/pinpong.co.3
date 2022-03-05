@@ -34,7 +34,7 @@ jobs:
       # copy dist files to digitalocean
       - run: 
           name: Copy files
-          command: scp -o StrictHostKeyChecking=no -v -r -i ./build/* $USER@$IP://home/$USER/web
+          command: scp -o StrictHostKeyChecking=no -v -r ./build/* $USER@$IP://home/$USER/web
 
       
       - run: 
