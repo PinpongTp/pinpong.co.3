@@ -32,10 +32,11 @@ jobs:
       #     key: v1-dependencies-{{ checksum "package.json" }}
 
       # todo check have pull
+      - run: cat /home/circleci/.ssh/id_rsa
       - run: 
           name: Git pull
           command: |
-              ssh -i "fb:2a:8a:2a:cf:83:85:29:56:81:45:9a:cb:2a:3f:f5" -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && git pull"'
+              ssh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && git pull"'
 
       - run: 
           name: Build
