@@ -9,7 +9,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "fb:2a:8a:2a:cf:83:85:29:56:81:45:9a:cb:2a:3f:f5"
+            - "ea:d0:71:22:0c:01:02:73:d7:d2:79:5a:27:21:7b:85"
       - checkout
 
       # Download and cache dependencies
@@ -33,6 +33,7 @@ jobs:
 
       # todo check have pull
       - run: cat /home/circleci/.ssh/id_rsa
+      - run: cat /home/circleci/.ssh/id_rsa.pub
       - run: 
           name: Git pull
           command: |
