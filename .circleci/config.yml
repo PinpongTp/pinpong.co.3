@@ -23,6 +23,7 @@ jobs:
           name: Run and build
           command: |
             npm i
+            unset CI
             npm run build
 
       - save_cache:
