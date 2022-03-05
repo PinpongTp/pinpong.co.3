@@ -1,0 +1,56 @@
+version: 2.1
+
+# Define the jobs we want to run for this project
+jobs:
+  pull-and-build:
+    docker:
+      # - image: arvindr226/alpine-ssh
+      - image: circleci/node
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "fb:2a:8a:2a:cf:83:85:29:56:81:45:9a:cb:2a:3f:f5"
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: Run and build
+          command: |
+            npm i
+            npm run build
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      # copy dist files to digitalocean
+      - run: 
+          name: Copy files
+          command: scp -o StrictHostKeyChecking=no -r ./build/* $USER@$IP://home/$USER/web
+
+      - run: 
+          name: Restart pm2
+          command: |
+            ssh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "pm2 restart app"'
+
+      # - run: ssh -o StrictHostKeyChecking=no -v $USER@$IP "bash ./deploy.sh"
+      
+
+# Orchestrate our job run sequence
+workflows:
+  version: 2
+  build-project:
+    jobs:
+      - pull-and-build:
+          filters:
+            branches:
+              only:
+                - main
+
