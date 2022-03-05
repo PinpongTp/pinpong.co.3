@@ -13,41 +13,41 @@ jobs:
       - checkout
 
       # Download and cache dependencies
-      # - restore_cache:
-      #     keys:
-      #     - v1-dependencies-{{ checksum "package.json" }}
-      #     # fallback to using the latest cache if no exact match is found
-      #     - v1-dependencies-
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
 
-      # - run:
-      #     name: Run and build
-      #     command: |
-      #       npm i
-      #       unset CI
-      #       npm run build
+      - run:
+          name: Run and build
+          command: |
+            npm i
+            unset CI
+            npm run build
 
-      # - save_cache:
-      #     paths:
-      #       - node_modules
-      #     key: v1-dependencies-{{ checksum "package.json" }}
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
 
       # todo check have pull
-      - run: cat /home/circleci/.ssh/id_rsa
-      - run: 
-          name: Git pull
-          command: |
-              ssh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && git pull"'
+      # - run: cat /home/circleci/.ssh/id_rsa
+      # - run: 
+      #     name: Git pull
+      #     command: |
+      #         ssh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && git pull"'
 
-      - run: 
-          name: Build
-          command: |
-              ssh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && npm run build"'
+      # - run: 
+      #     name: Build
+      #     command: |
+      #         ssh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && npm run build"'
       
 
       # copy dist files to digitalocean
-      # - run: 
-      #     name: Copy files
-      #     command: scp -o StrictHostKeyChecking=no -v -r -i ./build/* $USER@$IP://home/$USER/web
+      - run: 
+          name: Copy files
+          command: scp -o StrictHostKeyChecking=no -v -r -i ./build/* $USER@$IP://home/$USER/web
 
       
       - run: 
