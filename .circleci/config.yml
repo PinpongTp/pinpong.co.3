@@ -31,10 +31,22 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # copy dist files to digitalocean
+      # todo check have pull
       - run: 
-          name: Copy files
-          command: scp -o StrictHostKeyChecking=no -v -r -i ./build/* $USER@$IP://home/$USER/web
+          name: Git pull
+          command: |
+              sh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && git pull"'
+
+      - run: 
+          name: Build
+          command: |
+              sh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && npm run build"'
+      
+
+      # copy dist files to digitalocean
+      # - run: 
+      #     name: Copy files
+      #     command: scp -o StrictHostKeyChecking=no -v -r -i ./build/* $USER@$IP://home/$USER/web
 
       
       - run: 
