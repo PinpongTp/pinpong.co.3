@@ -36,6 +36,7 @@ jobs:
           name: Copy files
           command: scp -o StrictHostKeyChecking=no -r ./build/* $USER@$IP://home/$USER/web
 
+      - run: ssh-keyscan $SSH_SERVER >> ~/.ssh/known_hosts
       - run: 
           name: Restart pm2
           command: |
