@@ -13,29 +13,29 @@ jobs:
       - checkout
 
       # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+      # - restore_cache:
+      #     keys:
+      #     - v1-dependencies-{{ checksum "package.json" }}
+      #     # fallback to using the latest cache if no exact match is found
+      #     - v1-dependencies-
 
-      - run:
-          name: Run and build
-          command: |
-            npm i
-            unset CI
-            npm run build
+      # - run:
+      #     name: Run and build
+      #     command: |
+      #       npm i
+      #       unset CI
+      #       npm run build
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+      # - save_cache:
+      #     paths:
+      #       - node_modules
+      #     key: v1-dependencies-{{ checksum "package.json" }}
 
       # todo check have pull
       - run: 
           name: Git pull
           command: |
-              ssh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && git pull"'
+              ssh -i "fb:2a:8a:2a:cf:83:85:29:56:81:45:9a:cb:2a:3f:f5" -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && git pull"'
 
       - run: 
           name: Build
