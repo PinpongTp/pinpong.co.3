@@ -35,12 +35,12 @@ jobs:
       - run: 
           name: Git pull
           command: |
-              sh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && git pull"'
+              ssh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && git pull"'
 
       - run: 
           name: Build
           command: |
-              sh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && npm run build"'
+              ssh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && npm run build"'
       
 
       # copy dist files to digitalocean
