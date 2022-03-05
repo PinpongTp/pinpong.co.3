@@ -37,7 +37,7 @@ jobs:
       - run: 
           name: Git pull
           command: |
-              ssh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "cd www && git pull"'
+              ssh -o StrictHostKeyChecking=no -v $USER@$IP 'bash -i -c "npm -v"'
 
       - run: 
           name: Build
