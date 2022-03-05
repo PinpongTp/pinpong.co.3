@@ -34,7 +34,7 @@ jobs:
       # copy dist files to digitalocean
       - run: 
           name: Copy files
-          command: scp -o StrictHostKeyChecking=no -r ./build/* $USER@$IP://home/$USER/web
+          command: scp -o StrictHostKeyChecking=no -r -P ./build/* $USER@$IP://home/$USER/web
 
       - run: 
           name: Restart pm2
