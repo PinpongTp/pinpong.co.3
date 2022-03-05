@@ -32,10 +32,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # copy dist files to digitalocean
-      - run: scp -o StrictHostKeyChecking=no -r ./* $USER@$IP://home/$USER/test
-      # - run: 
-      #     name: Copy files
-      #     command: scp -o StrictHostKeyChecking=no -r ./build/* $USER@$IP://home/$USER/web
+      - run: 
+          name: Copy files
+          command: scp -o StrictHostKeyChecking=no -r ./build/* $USER@$IP://home/$USER/web
 
       - run: 
           name: Restart pm2
