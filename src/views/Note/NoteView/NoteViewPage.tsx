@@ -20,7 +20,7 @@ function NoteViewPage() {
     return (
         <>
             <h1>{note.title}</h1>
-            <div>{note.subtitle}</div>
+            <div>{note.content}</div>
         </>
     )
 }

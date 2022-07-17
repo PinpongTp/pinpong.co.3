@@ -4,12 +4,17 @@ import useReactRouteuseBreadcrumbsrBreadcrumbs from 'use-react-router-breadcrumb
 import { Link } from 'react-router-dom'
 
 function Breadcrumb() {
-
-    const routes = [{ path: '/note/note/01', breadcrumb: 'test' }]
+    const routes = [{ path: '/note/*', breadcrumb: 'Note' }]
 
     const breadcrumbs = useReactRouteuseBreadcrumbsrBreadcrumbs(routes)
 
-    if (breadcrumbs.length === 1) {
+    if (breadcrumbs.length === 3) {
+        return (
+            <h3>
+                <span>Note</span>
+            </h3>
+        )
+    } else if (breadcrumbs.length === 1) {
         return (
             <h3>
                 <span>Home</span>

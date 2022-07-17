@@ -1,28 +1,21 @@
-import Axios from "axios";
-import { resolve } from "path/posix";
+import Axios from 'axios'
 
-
-const url = 'http://localhost:3002'
+//const url = 'http://localhost:8080/v1/'
+const url = 'https://peaceful-earth-87778.herokuapp.com/v1'
 const config = {
     headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    }
+        'Content-Type': 'application/json',
+    },
 }
 
 class NoteService {
-    constructor() {
-    }
-
-    // const API_URL = configData.API_URL + '/note';
-    
     getNote(noteId?: string) {
-        if(noteId) {
-            return Axios.get(`${url}/note/data/${noteId}`)
-        }else {
-            return Axios.get(`${url}/note/list`, config)
+        if (noteId) {
+            return Axios.get(`${url}/note/${noteId}`, config)
+        } else {
+            return Axios.get(`${url}/note`, config)
         }
     }
-
 }
 
-export default new NoteService();
+export default new NoteService()
