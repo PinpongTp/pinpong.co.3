@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import NoteService from '../../../services/note-service/note-service';
+import ReactMarkdown from 'react-markdown';
 
 function NoteViewPage() {
   const { noteView } = useParams();
@@ -10,6 +11,7 @@ function NoteViewPage() {
     if (noteView) {
       NoteService.getNote(noteView)
         .then((res) => {
+          res.data.content = JSON.parse(res.data.content);
           setNote(res.data);
           console.log(res.data);
         })
@@ -20,7 +22,7 @@ function NoteViewPage() {
   return (
     <>
       <h2>{note.title}</h2>
-      <div>{note.content}</div>
+      <ReactMarkdown>{note.content}</ReactMarkdown>
     </>
   );
 }
