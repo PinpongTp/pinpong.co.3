@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom';
-// import note from "../../store/note.json"
-import { v4 as uuidv4 } from 'uuid';
 import NoteService from '../../services/note-service/note-service';
 import { useEffect, useState } from 'react';
 function NotePage() {

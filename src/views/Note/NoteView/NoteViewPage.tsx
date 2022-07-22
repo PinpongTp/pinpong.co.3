@@ -17,7 +17,7 @@ function NoteViewPage() {
         })
         .catch((err) => console.error(err));
     }
-  }, []);
+  }, [noteView]);
 
   return (
     <>

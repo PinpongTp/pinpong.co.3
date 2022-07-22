@@ -31,7 +31,7 @@ function MyStylePage() {
         <br />
         <i>
           ref:{' '}
-          <a href="https://www.swyx.io/css-100-bytes/" target="_blank">
+          <a href="https://www.swyx.io/css-100-bytes/" target="_blank" rel="noreferrer">
             https://www.swyx.io/css-100-bytes/
           </a>
         </i>

@@ -6,7 +6,7 @@ function HomePage() {
         Hello, my name is Pinpong Tongpat (Pin). <br /> I am full stack web developer.
       </p>
 
-      <img src={require('../../assets/profile.jpg')} />
+      <img src={require('../../assets/profile.jpg')} alt="pinpong.co" />
 
       <p>
         สวัสดีผมเป็น dev เดปไม่ได้หมายถึงคนเขียนโปรแกรม แต่หมายถึงนักพัฒนา และความหมายของผมต่างไปจากนั้นอีก

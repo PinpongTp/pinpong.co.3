@@ -1,7 +1,7 @@
 import React from 'react';
 // import 'bootstrap/dist/css/bootstrap.css';
 import './assets/App.css';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 //layouts
 import Header from './components/layouts/Header/Header';
