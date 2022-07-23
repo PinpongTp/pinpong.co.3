@@ -1,6 +1,0 @@
-This favicon was generated using the following font:
-
-- Font Title: Tienne
-- Font Author: Copyright (c) 2011, Vernon Adams (vern@newtypography.co.uk) with Reserved Font Names 'Tienne'
-- Font Source: http://fonts.gstatic.com/s/tienne/v18/AYCJpX7pe9YCRP0zFG7jQHhuzvef5Q.ttf
-- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
